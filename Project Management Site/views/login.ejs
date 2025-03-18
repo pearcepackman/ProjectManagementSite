@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Simplified</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+    <%- include('includes/nav') %>
+    
+
+    <div class = "BOX">
+        <br>
+        <h1>Already Have an Account?</h1>
+        <h2>Log In</h2><br>
+        <% errors.forEach(error => { %>
+            <p class ="notice"><%= error %></p>
+       <% }) %>
+        <form action = "/login" method = "POST">
+            <h4 for = "username" class = "formlabel">Username</h4>
+            <input type = "text" id = "username" name = "username" autocomplete="off" class = "forminput">
+            
+            <h4 for = "password" class = "formlabel">Password</h4>
+            <input type = "password" id = "password" name = "password" class = "forminput" autocomplete="off"><br>
+            <button class = "createbutton">Log In</button>
+        </form>
+    </div>
+</body>
+</html>

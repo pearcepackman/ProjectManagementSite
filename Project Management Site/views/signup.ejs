@@ -11,10 +11,19 @@
     
 
     <div class = "BOX">
+        <br>
         <h1>Let's Get Started</h1>
-        <h2>Create an Account</h2>
-        <form>
-            <h4 class = "formlabel">Username</h4>
+        <h2>Create an Account</h2><br>
+        <% errors.forEach(error => { %>
+            <p class ="notice"><%= error %></p>
+       <% }) %>
+        <form action = "/signup" method = "POST">
+            <h4 for = "username" class = "formlabel">Username</h4>
+            <input type = "text" id = "username" name = "username" autocomplete="off" class = "forminput">
+            
+            <h4 for = "password" class = "formlabel">Password</h4>
+            <input type = "password" id = "password" name = "password" class = "forminput" autocomplete="off"><br>
+            <button class = "createbutton">Create Account</button>
         </form>
     </div>
 </body>

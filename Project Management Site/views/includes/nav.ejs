@@ -11,8 +11,14 @@
         <a href = "/about" class = "OptionAbout" style="text-decoration:none;">About</a>
         
     </div>
-    <a class = "Login">Login</a>
-    <a href = "/signup" class = "GetStarted">Get Started</a>
+    <% if(user) { %>
+    <a href = "/logout" class = "Login">Log out</a>
     
+    <a href = "/userpage" class = "loggedinoptions">Your Projects</a>
+    <% } %>
+    <% if(!user) { %>
+    <a href = "/login" class = "Login">Login</a>
+    <a href = "/signup" class = "GetStarted">Get Started</a>
+    <% } %>
     
 </header>

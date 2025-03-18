@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Simplified</title>
+    <link rel = "stylesheet" href = "/style.css">
+</head>
+<body>
+    <%- include('includes/nav') %>
+    
+
+    <div class = "PROJBOX">
+        <h1>Project Editor</h1>
+        <h2><%=project.title%></h2>
+        <% errors.forEach(error => { %>
+            <p class ="notice"><%= error %></p>
+       <% }) %>
+        <form action = "/createtask" method = "POST">
+            <h4 for = "tasktitle" class = "formlabel">Task Name</h4>
+            <input type = "text" id = "projectitle" name = "projectitle" autocomplete="off" class = "forminput">
+            
+            <h4 for = "taskdesc" class = "formlabel">Project Description</h4>
+            <input type = "text" id = "taskdesc" name = "taskdesc" class = "forminput" autocomplete="off"><br>
+            <button class = "createbutton">Create Task</button>
+        </form>
+        
+    </div>
+</body>
+</html>

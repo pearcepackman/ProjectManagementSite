@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Simplified</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+    <%- include('includes/nav') %>
+    
+
+    <div class = "BOX">
+        <h1>Welcome, <%=user.username%> </h1>
+        <a href = "/createproject">Create a Project</a>
+        <% getprojects.forEach(project => { %>
+            <a href = "/project/<%=project.id%>" ><%= project.title %></a>
+       <% }) %>
+
+        
+    </div>
+</body>
+</html>
