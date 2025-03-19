@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser")
 const db = require("better-sqlite3")("ProjectManagement.db")
 db.pragma("journal_mode = WAL")
 app.set("view engine", "ejs")
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({extended: true}))
 app.use(express.static("public"))
 app.use(cookieParser())
 
@@ -45,6 +45,13 @@ createTables()
 
 app.use(function (req, res, next){
     res.locals.errors = []
+
+    if(req.params.id) {
+        const statement = db.prepare("SELECT * FROM projects WHERE id = ?")
+        const project = statement.get(req.params.id)
+        res.locals.project = project
+    }
+    
 
     try {
         const decoded = jwt.verify(req.cookies.UserCookie, process.env.JWTSECRET)
@@ -105,7 +112,7 @@ app.post("/login", (req, res) => {
         return res.render("login", {errors})
     }
 
-    //TEMPORARY PASSWORD CHECK, NOT SECURE
+    
     const passchecker = bcrypt.compareSync(req.body.password, usersearchcheck.password)
     
     if(!passchecker){
@@ -149,36 +156,51 @@ app.get("/project/:id", mustBeLoggedIn, (req, res) => {
     
     const statement = db.prepare("SELECT * FROM projects WHERE id = ?")
     const project = statement.get(req.params.id)
-    console.log(project)
+    console.log(req.params.id)
+    
     if(!project){
         return res.redirect("/")
     }
 
-    /*const gettasksstatement = db.prepare("SELECT * FROM projects WHERE projectid = ?")
-    const gettasks = gettasksstatement.all(project)
-    if(!tasks){
+    const gettasksstatement = db.prepare("SELECT * FROM tasks WHERE projectid = ?")
+    const gettasks = gettasksstatement.all(req.params.id)
+    console.log(gettasks)
+    if(!gettasks){
         return res.render("userpage")
     }    
     
 
 
-    res.render("projectpage", { project }, {gettasks})*/
-    res.render("projectpage", { project })
+    res.render("projectpage", { project , gettasks })
+    
 })
 
-app.post("/createtask", mustBeLoggedIn, (req, res) => {
+
+app.post("/createtask/:id", mustBeLoggedIn, (req, res) => {
     const errors = []
+    console.log(req.body.tasktitle)
     if(!req.body.tasktitle) errors.push("Must provide a task title")
-    /*const statement = db.prepare("SELECT * FROM projects WHERE id = ?")
+
+    const statement = db.prepare("SELECT * FROM projects WHERE id = ?")
     const project = statement.get(req.params.id)
+
+    /*if(errors.length){
+        return res.render("projectpage", {errors})
+    }*/
+    console.log(req.params.id)
+    
+    
 
     
 
     
     const taskstate = db.prepare("INSERT INTO tasks (projectid, title, description) VALUES (?, ?, ?)")
-    const addtask = taskstate.run(project.id, req.body.tasktitle, req.body.taskdesc)*/
+    const addtask = taskstate.run(req.params.id, req.body.tasktitle, req.body.taskdesc)
+
+    const gettasksstatement = db.prepare("SELECT * FROM tasks WHERE projectid = ?")
+    const gettasks = gettasksstatement.all(req.params.id)
     
-    res.redirect("signup")
+    res.render("projectpage", { project, gettasks } )
     
     
 
