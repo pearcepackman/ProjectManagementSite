@@ -16,9 +16,31 @@
         <% errors.forEach(error => { %>
             <p class ="notice"><%= error %></p>
        <% }) %>
-       <h4>Current Tasks: <% gettasks.forEach(task => { %>
-        <p class ="notice"><%=task.title%></p>
-        <% }) %></h4>
+       <h4>Current Tasks:</h4>
+       <div class = "taskarea">
+            <%let taskcounter = 1;%>
+            <% gettasks.forEach(task => { %>
+            <div class = "taskcard">
+                <h4 class ="notice" style = "text-align: center">Task #<%=taskcounter%><br><%=task.title%></h4>
+                <p><%=task.description%><%=task.taskid%></p><br>
+                <div class = "taskoptions">
+                    <br>
+                    
+                        <button>Complete Task</button>
+                    
+                    <button>Edit Task</button>
+                    <form action = "/deletetask/<%=task.id%>" method = "POST">
+                        <button>Delete Task</button>
+                    </form>
+                    
+                </div>
+                
+
+            </div>
+            
+            <% taskcounter++;}) %>
+       </div>
+       
         <form action = "/createtask/<%=project.id%>" method = "POST">
             <h4 for = "tasktitle" class = "formlabel">Task Name</h4>
             <input type = "text" id = "tasktitle" name = "tasktitle" autocomplete="off" class = "forminput">

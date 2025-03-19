@@ -156,7 +156,7 @@ app.get("/project/:id", mustBeLoggedIn, (req, res) => {
     
     const statement = db.prepare("SELECT * FROM projects WHERE id = ?")
     const project = statement.get(req.params.id)
-    console.log(req.params.id)
+    /*console.log(req.params.id)*/
     
     if(!project){
         return res.redirect("/")
@@ -164,11 +164,14 @@ app.get("/project/:id", mustBeLoggedIn, (req, res) => {
 
     const gettasksstatement = db.prepare("SELECT * FROM tasks WHERE projectid = ?")
     const gettasks = gettasksstatement.all(req.params.id)
-    console.log(gettasks)
+    
     if(!gettasks){
         return res.render("userpage")
     }    
     
+    function findTask(req, res, next){
+        console.log("FOUND")
+    }
 
 
     res.render("projectpage", { project , gettasks })
@@ -178,7 +181,7 @@ app.get("/project/:id", mustBeLoggedIn, (req, res) => {
 
 app.post("/createtask/:id", mustBeLoggedIn, (req, res) => {
     const errors = []
-    console.log(req.body.tasktitle)
+    /*console.log(req.body.tasktitle)*/
     if(!req.body.tasktitle) errors.push("Must provide a task title")
 
     const statement = db.prepare("SELECT * FROM projects WHERE id = ?")
@@ -187,7 +190,7 @@ app.post("/createtask/:id", mustBeLoggedIn, (req, res) => {
     /*if(errors.length){
         return res.render("projectpage", {errors})
     }*/
-    console.log(req.params.id)
+    /*console.log(req.params.id)*/
     
     
 
@@ -206,6 +209,7 @@ app.post("/createtask/:id", mustBeLoggedIn, (req, res) => {
 
 })
 
+
 app.post("/createproject", mustBeLoggedIn, (req, res) => {
     const errors = []
     if(!req.body.projectitle) errors.push("Must provide a project title")
@@ -214,7 +218,7 @@ app.post("/createproject", mustBeLoggedIn, (req, res) => {
         return res.render("createproject", {errors})
     }
 
-    console.log(req.user.username, req.body.projectitle, req.body.projectdesc)
+    /*console.log(req.user.username, req.body.projectitle, req.body.projectdesc*/
     const projectstate = db.prepare("INSERT INTO projects (username, title, desc) VALUES (?, ?, ?)")
     const addproject = projectstate.run(req.user.username, req.body.projectitle, req.body.projectdesc)
 
@@ -265,5 +269,9 @@ app.post("/signup", (req, res) => {
 
     res.redirect("/")
 })
+
+function findTask(req, res, next){
+    console.log("FOUND")
+}
 
 app.listen(3000)

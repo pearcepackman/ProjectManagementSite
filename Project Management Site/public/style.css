@@ -309,6 +309,94 @@ h2{
     animation-name: textdrop;
 }
 
+.taskarea {
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: 50px;
+    width: 85%;
+    min-height: 70%;
+    margin-top: 2%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1%;
+    
+}
+
+.taskcard{
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    height: 80%;
+    display:flex;
+    flex-direction:column;
+    background-color:rgb(46, 46, 46);
+    padding: 5px;
+    box-shadow: 0 0 15px 4px rgb(220, 234, 235, 0.05);
+    border: 1px solid rgb(244, 247, 247, 0.05);
+    border-radius: 10px;
+    min-width: 20%;
+    word-wrap: break-word;
+    text-align: center;
+    transition:all .15s ease;
+}
+
+
+.taskcard:hover{
+    display:flex;
+    flex-direction: column;
+    background-color:rgb(52, 52, 52);
+    box-shadow: 0 0 10px 5px rgb(220, 234, 235, 0.1);
+    padding: 5px;
+    /*border: solid 1px black;*/
+    border-radius: 10px;
+    min-width: 20%;
+    word-wrap: break-word;
+    text-align: center;
+    transform: scale(1.05);
+    font-size: 1.05rem;
+    /*cursor: pointer;*/
+    
+}
+
+.taskoptions{
+    
+    display:flex;
+    flex-direction: column;
+    width: 90%;
+   
+    margin-top: auto;
+
+}
+
+.taskoptions *{
+    margin-top:5%;
+    margin-bottom: 2%;
+    height: 50%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-family: "Geist";
+    font-size: 15px;
+    width: 90%;
+    border-radius: 20px;
+    font-weight: 500;
+    border:none;
+    background-color:rgb(86, 86, 86);
+    color:rgba(207, 207, 207, 0.9);
+    transition:all .1s ease;
+    border: solid 1px rgb(40, 40, 40);
+    
+}
+
+.taskoptions *:hover {
+    background-color:rgb(104, 103, 103);
+    cursor: pointer;
+    transform: scale(1.03);
+    color:rgba(244, 255, 254, 0.9);
+    box-shadow: 0 0 10px 2px rgb(220, 234, 235, 0.1);
+}
+
 
 
 
@@ -318,14 +406,14 @@ h2{
         filter: blur(1px);
         opacity: 30%;
         position: sticky;
-        margin-top: 1%;
+        transform: translateY(30%);
         
        
 
     }
     100%{
         filter: none;
-        margin-top: 0%;
+        transform: translateY(0);
         position: sticky;
         opacity: 90%;
     }
@@ -334,24 +422,26 @@ h2{
     0%{
         filter: blur(.25px);
         opacity: 30%;
-        margin-top: 3%;
+        /*margin-top: 3%;*/
+        transform: translateY(30%);
     }
     100%{
         filter: none;
-        margin-top: 2.5%;
+        /*margin-top: 2.5%;*/
         opacity: 90%;
+        transform: translateY(0);
     }
 }
 @keyframes textdrop{
     0%{
         filter:blur(.25px);
         opacity:30%;
-        margin-top: .5%;
+        transform: translateY(30%);
         
     }
     100%{
         filter:none;
-        margin-top: 0%;
+        transform: translateY(0);
         opacity:90%;
     }
 }
