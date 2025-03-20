@@ -4,18 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects Simplified</title>
-    <link rel = "stylesheet" href = "style.css">
+    <link rel = "stylesheet" href = "/style.css">
 </head>
 <body>
     <%- include('includes/nav') %>
     
 
-    <div class = "BOX">
+    <div class = "PROJBOX">
         <h1>Welcome, <%=user.username%> </h1>
         <a href = "/createproject">Create a Project</a>
-        <% getprojects.forEach(project => { %>
-            <a href = "/project/<%=project.id%>" ><%= project.title %></a>
-       <% }) %>
+        <div class = "taskarea">
+            <%let projcounter = 1;%>
+            <% getprojects.forEach(project => { %>
+                
+                <div class = "taskcard <%= project.completed ? 'completed' : '' %>" id = "project-<%= getprojects.id %>">
+
+                    
+                       
+                        <form action = "/edit-project/<%=project.id%>" method = "POST">
+                            <h4>Task Name</h4>
+                            <input type = "text" id = "tasktitle" name = "tasktitle"class = "taskinputtitle" placeholder = "Title: <%=project.title%>" style = "text-align:center">
+                            <h4>Task Description</h4>
+                            <textarea type = "text" id = "taskdesc" name = "taskdesc" class = "taskinputdesc" placeholder = "Description: <%=project.desc%>" style = "text-align:center"></textarea>
+                        <div class = "taskoptions">
+                            
+                            <button class = "saveedit">Save Edit</button>
+                            
+                        </div>
+                        </form>
+                        
+
+                    <h4 class ="taskcardtitle" style = "text-align: center">Project #<%=projcounter%><br><%=project.title%></h4>
+                    <br>
+                    <p class = "taskdescription"><%=project.desc%></p><br>
+                    <a href = "/project/<%=project.id%>" ><%= project.title %></a>
+                    <%if (project.completed == 0){%>
+                    <div class = "taskoptions">
+                        <br>
+                        
+                        
+                        <a href = "/complete-project/<%=project.id%>">Complete Project</a>
+                        
+                        <a href = "/edit-project/<%=project.id%>">Edit Project</a>
+                        <a href = "/delete-project/<%=project.id%>">Delete Task</a>
+                        
+                        
+                    </div>
+                    <%}%>
+                    <%if (project.completed == 1){%>
+                        <h3>COMPLETED</h3>
+                    <div class = "taskoptions">
+                        <a href = "/uncomplete-project/<%=project.id%>">Uncomplete</a>
+                        <a href = "/delete-project/<%=project.id%>">Delete Task</a>
+                    </div>
+                    <%}%>
+                
+                </div>
+            <% projcounter++;}) %>
+            
+                
+        </div>
 
         
     </div>
