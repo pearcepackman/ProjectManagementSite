@@ -12,55 +12,121 @@
 
     <div class = "PROJBOX">
         <h1>Welcome, <%=user.username%> </h1>
-        <a href = "/createproject">Create a Project</a>
+        <%if(getprojects==0){%>
+            <h2>Looks like there's no projects!</h2><br>
+            <h3>Get started by making a project!</h3>
+        <%}else{%>
+            <h2>Select a project to get started!</h2><br>
+            <h3>Click a card to begin!</h3>
+            <%}%>
+        
         <div class = "taskarea">
             <%let projcounter = 1;%>
             <% getprojects.forEach(project => { %>
                 
+                
                 <div class = "taskcard <%= project.completed ? 'completed' : '' %>" id = "project-<%= getprojects.id %>">
-
                     
-                       
-                        <form action = "/edit-project/<%=project.id%>" method = "POST">
-                            <h4>Task Name</h4>
-                            <input type = "text" id = "tasktitle" name = "tasktitle"class = "taskinputtitle" placeholder = "Title: <%=project.title%>" style = "text-align:center">
-                            <h4>Task Description</h4>
-                            <textarea type = "text" id = "taskdesc" name = "taskdesc" class = "taskinputdesc" placeholder = "Description: <%=project.desc%>" style = "text-align:center"></textarea>
+                    <% if (typeof getprojectinedit !== "undefined" && getprojectinedit && getprojectinedit.id) { %>
+                        <%if (getprojectinedit.id == project.id){%>
+                    
+                        <form action = "/save-edit-project/<%=project.id%>" method = "POST">
+                            <h4>Project Name</h4>
+                            <input type = "text" id = "projecttitle" name = "projecttitle" class = "taskinputtitle" value = "<%=project.title%>" style = "text-align:center">
+                            <h4>Project Description</h4>
+                            <textarea type = "text" id = "projectdesc" name = "projectdesc" class = "taskinputdesc" style = "text-align:center"><%=project.desc%></textarea>
                         <div class = "taskoptions">
                             
                             <button class = "saveedit">Save Edit</button>
                             
                         </div>
                         </form>
+                        <%} else{%>
+                            <a href = "/project/<%=project.id%>" class = "projectlink">
+                            <h4 class ="taskcardtitle" style = "text-align: center">Project #<%=projcounter%><br><%=project.title%></h4>
+                            <br>
+                            <p class = "taskdescription"><%=project.desc%></p><br>
+                            </a>
+                            <%if (project.completed == 0){%>
+                            <div class = "taskoptions">
+                                <br>
+                                
+                                
+                                <a href = "/complete-project/<%=project.id%>">Complete Project</a>
+                                
+                                <a href = "/edit-project/<%=project.id%>">Edit Project Details</a>
+                                <a href = "/delete-project/<%=project.id%>">Delete Project</a>
+                                
+                                
+                            </div>
+                            
+                            <%}%>
+                            <%if (project.completed == 1){%>
+                                <h3>COMPLETED</h3>
+                            <div class = "taskoptions">
+                                <a href = "/uncomplete-project/<%=project.id%>">Uncomplete</a>
+                                <a href = "/delete-project/<%=project.id%>">Delete Project</a>
+                            </div>
+                            <%}%>
+                            <%}%>
                         
-
+                        <% } else { %>
+                            
+                        
+                            
+                        
+                    <a href = "/project/<%=project.id%>" class = "projectlink">
                     <h4 class ="taskcardtitle" style = "text-align: center">Project #<%=projcounter%><br><%=project.title%></h4>
                     <br>
-                    <p class = "taskdescription"><%=project.desc%></p><br>
-                    <a href = "/project/<%=project.id%>" ><%= project.title %></a>
+                    <p class = "taskdescription"><%=project.desc%></p>
+                    </a>
+                    
                     <%if (project.completed == 0){%>
                     <div class = "taskoptions">
-                        <br>
+                        
                         
                         
                         <a href = "/complete-project/<%=project.id%>">Complete Project</a>
                         
-                        <a href = "/edit-project/<%=project.id%>">Edit Project</a>
-                        <a href = "/delete-project/<%=project.id%>">Delete Task</a>
+                        <a href = "/edit-project/<%=project.id%>">Edit Project Details</a>
+                        <a href = "/delete-project/<%=project.id%>">Delete Project</a>
                         
                         
                     </div>
+                    
                     <%}%>
                     <%if (project.completed == 1){%>
                         <h3>COMPLETED</h3>
                     <div class = "taskoptions">
                         <a href = "/uncomplete-project/<%=project.id%>">Uncomplete</a>
-                        <a href = "/delete-project/<%=project.id%>">Delete Task</a>
+                        <a href = "/delete-project/<%=project.id%>">Delete Project</a>
                     </div>
-                    <%}%>
                 
+                    <%}%>
+                    <% } %>
+                    
+                    
                 </div>
+                
+            
             <% projcounter++;}) %>
+            <div class = "taskcard">
+                <h4 class = "notice" style = "text-align: center">Make a Project</h4>
+                <form action = "/createproject" method = "POST">
+                    <h4 for = "tasktitle" class = "notice">Project Name</h4>
+                    <input type = "text" id = "projectitle" name = "projectitle" autocomplete="off" class = "taskinputtitle">
+                    
+                    <h4 for = "taskdesc" class = "notice">Project Description</h4>
+                    <textarea type = "text" id = "projectdesc" name = "projectdesc" class = "taskinputdesc" autocomplete="off"></textarea><br>
+                    
+                    <div class = "taskoptions">
+                        <button class = "taskbutton">Create Project</button>
+                    </div>
+                </form>
+                
+            </div>
+            
+            
             
                 
         </div>

@@ -13,7 +13,7 @@
 
     <div class = "PROJBOX">
         <h1>Project Editor</h1>
-        <h2><%=project.title%></h2>
+        <h2>Project: <%=project.title%></h2>
         <% errors.forEach(error => { %>
             <p class ="notice"><%= error %></p>
        <% }) %>
@@ -31,7 +31,7 @@
                 
                 
             <div class = "taskcard <%= task.completed ? 'completed' : '' %>"  id = "task-<%= task.taskid %>">
-                <h4 class ="taskcardtitle" style = "text-align: center">Task #<%=taskcounter%><br><%=task.title%>
+                <h4 class ="tasktitle" style = "text-align: center">Task #<%=taskcounter%><br><%=task.title%>
                 <br>
                 </h4>
                 <p class = "taskdescription"><%=task.description%></p><br>

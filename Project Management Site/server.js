@@ -149,9 +149,13 @@ app.get("/createproject", mustBeLoggedIn, (req, res) => {
 app.get("/userpage", mustBeLoggedIn, (req, res) => {
     const getprojectsstatement = db.prepare("SELECT * FROM projects WHERE username = ?")
     const getprojects = getprojectsstatement.all(req.user.username)
+
     res.render("userpage", { getprojects })
 })
 
+app.get("/features", (req, res) => {
+    res.render("features")
+})
 
 app.get("/project/:id", mustBeLoggedIn, (req, res) => {
     
@@ -187,6 +191,7 @@ app.get("/project/:projectid/edit-task/:id", mustBeLoggedIn, (req, res) => {
 
     const gettaskineditstate = db.prepare("SELECT * FROM tasks WHERE taskid = ?")
     const gettaskinedit = gettaskineditstate.get(req.params.id)
+
     
     
     res.render("edittaskpage", { project, gettasks, gettaskinedit } )
@@ -210,18 +215,31 @@ app.get("/project/:projectid/complete-task/:id", mustBeLoggedIn, (req, res) => {
 app.get("/edit-project/:projectid", mustBeLoggedIn, (req, res) => {
     
     const getprojectineditstate = db.prepare("SELECT * FROM projects WHERE id = ?")
-    const getprojectinedit = getprojectineditstate.get(req.params.projectid)
+    const getprojectinedit = getprojectineditstate.get(req.params.projectid) ||  null
+    
     const getprojectsstatement = db.prepare("SELECT * FROM projects WHERE username = ?")
     const getprojects = getprojectsstatement.all(req.user.username)
-    console.log(getprojectinedit.id)
+    if(!getprojectinedit){
+        res.redirect("userpage")
+    }
+    else{
+    /*console.log(getprojectinedit.id)*/
+
     res.render("userpage", {getprojectinedit, getprojects})
+    }
+})
+
+app.post("/save-edit-project/:projectid", mustBeLoggedIn, (req, res) => {
+    const writeprojecteditstate = db.prepare("UPDATE projects SET title = ?, desc = ? WHERE id = ?")
+    const wrtieprojectedit = writeprojecteditstate.run(req.body.projecttitle, req.body.projectdesc, req.params.projectid)
+    res.redirect("/userpage")
 })
 
 app.get("/complete-project/:projectid", mustBeLoggedIn, (req, res) => {
 
     const getcompletedprojectstate = db.prepare("UPDATE projects SET completed = 1 WHERE id = ?")
     const completeproject = getcompletedprojectstate.run(req.params.projectid)
-    console.log(req.params.projectid)
+    
 
     res.redirect("/userpage")
 })
@@ -240,7 +258,7 @@ app.get("/delete-project/:projectid", mustBeLoggedIn, (req, res) => {
     res.redirect("/userpage")
 })
 
-app.get("/project/:projectid/save-task-edit/:id", mustBeLoggedIn, (req, res) => {
+/*app.get("/project/:projectid/save-task-edit/:id", mustBeLoggedIn, (req, res) => {
     
     const gettasksstatement = db.prepare("SELECT * FROM tasks WHERE projectid = ?")
     const gettasks = gettasksstatement.all(req.params.projectid)
@@ -254,6 +272,7 @@ app.get("/project/:projectid/save-task-edit/:id", mustBeLoggedIn, (req, res) => 
     res.redirect(`/project/${project.id}`)
     
 })
+*/
 
 app.get("/project/:projectid/delete-task/:id", mustBeLoggedIn, (req, res) => {
     const statement = db.prepare("SELECT * FROM projects WHERE id = ?")
@@ -325,7 +344,7 @@ app.post("/createtask/:id", mustBeLoggedIn, (req, res) => {
 
 app.post("/createproject", mustBeLoggedIn, (req, res) => {
     const errors = []
-    if(!req.body.projectitle) errors.push("Must provide a project title")
+    /*if(!req.body.projectitle) errors.push("Must provide a project title")*/
     
     if(errors.length){
         return res.render("createproject", {errors})

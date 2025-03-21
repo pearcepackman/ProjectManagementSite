@@ -28,9 +28,9 @@
                     <h4>Task #<%=taskcounter%></h4>
                     <form action = "/project/<%=project.id%>/save-task-edit/<%=task.taskid%>" method = "POST">
                         <h4>Task Name</h4>
-                        <input type = "text" id = "tasktitle" name = "tasktitle"class = "taskinputtitle" placeholder = "Title: <%=task.title%>" style = "text-align:center">
+                        <input type = "text" id = "tasktitle" name = "tasktitle"class = "taskinputtitle" value = "<%=task.title%>" style = "text-align:center">
                         <h4>Task Description</h4>
-                        <textarea type = "text" id = "taskdesc" name = "taskdesc" class = "taskinputdesc" placeholder = "Description: <%=task.description%>" style = "text-align:center"></textarea>
+                        <textarea type = "text" id = "taskdesc" name = "taskdesc" class = "taskinputdesc"  style = "text-align:center"><%=task.description%></textarea>
                     <div class = "taskoptions">
                         
                         <button class = "saveedit">Save Edit</button>
