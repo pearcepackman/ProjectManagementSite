@@ -6,16 +6,30 @@
 *{
     margin: 0;
     padding: 0;
+    
 }
 
 :root{
     --titlewhite: #dbd7d7
 }
 
+html{
+    height: 100%;
+    background-size:cover;
+    
+    
+    
+    
+}
 body{
     background-image: url("background.jpg");
-    
+    min-height: 100%;
     background-size: 160%;
+    background-color: rgb(7, 5, 47);
+    
+    
+    
+    
     
 }
 
@@ -251,36 +265,37 @@ a {
 .gallerysection:hover img:not(:hover){
     transform: scale(.95);
     transform: translateY(7%);
-    filter:brightness(50%);
+    filter:brightness(40%);
+    
 }
 .img3{
     margin-top: 0%;
     left: 10%;
-    filter:brightness(50%);
+    filter:brightness(60%);
 }
 .img2{
     margin-top: 0%;
     left: 3%;
-    filter: brightness(50%);
+    filter: brightness(60%);
 }
 .img1{
     left: -4%;
-    filter:brightness(50%);
+    filter:brightness(60%);
 }
 .img6{
     margin-top: 0%;
     /*left: 11.8%;*/
     left:12.5%;
-    filter:brightness(50%);
+    filter:brightness(60%);
 }
 .img5{
     margin-top: 0%;
     left: 4.5%;
-    filter: brightness(50%);
+    filter: brightness(60%);
 }
 .img4{
     left: -3.5%;
-    filter:brightness(50%);
+    filter:brightness(60%);
 }
 .aboutbox2{
     text-align: center;
@@ -342,6 +357,7 @@ a {
     font-weight: 400;
 }
 /*ABOUT PAGE: END*/
+/*FEATURE PAGE: BEGIN*/
 .featurebox1 {
     display: flex;
     align-items: center; /* Aligns the items (circle and description) vertically */
@@ -354,7 +370,7 @@ a {
     gap: 10px;
     font-size: 19px;
     font-weight: 400;
-    color: rgba(207, 207, 207, 0.9);
+    color: rgba(183, 183, 183, 0.9);
     transition: all 0.2s ease;
 }
 
@@ -394,7 +410,82 @@ a {
     font-size: 16px;
     margin-top: 5px;
 }
-
+/*FEATURE PAGE: END*/
+/*HOME PAGE: BEGIN*/
+.HOMEBOX{
+    background-color: rgba(100, 100, 100, 0.150);
+    box-shadow: 0 0 35px 4px rgb(220, 234, 235, 0.15);
+    border: 1px solid rgb(244, 247, 247, 0.05);
+    height:auto;
+    
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    backdrop-filter: blur(15px);
+    overflow-wrap:break-word;
+    
+    color: rgba(183, 183, 183, 0.9);
+    animation-duration: .3s;
+    animation-name: boxdrop;
+}
+.HOMEBOX h3{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+}
+.HOMEBOX h4{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 160%;
+    color:rgba(207, 207, 207, 0.9);
+}
+.HOMEBOX * {
+    font-family: "Geist";
+    margin-left: auto;
+    margin-right: auto;
+}
+.homepagebox{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 90%;
+    align-items: flex-start;
+    /*background-color: blue;*/
+    font-family: "Geist";
+    margin-top: 2%;
+    margin-bottom:2%;
+    
+    
+}
+.homepagebox *{
+    margin-left: 0%;
+}
+.homepagebox1{
+    
+    display:flex;
+    justify-content: flex-start;
+    width:100%;
+    transition: all 0.2s ease;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 160%;
+    
+}
+.homepagebox1:hover{
+    transform: scale(1.01);
+    color:rgba(207, 207, 207, 0.9);
+}
+.homepagebox1 *{
+    margin-right: 3%;
+    margin-top:auto;
+    margin-bottom:auto;
+}
+/*HOME PAGE: END*/
 .BOX{
     background-color: rgba(100, 100, 100, 0.150);
     box-shadow: 0 0 35px 4px rgb(220, 234, 235, 0.15);
