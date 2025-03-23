@@ -1,18 +1,16 @@
+/*----------HTML, BODY, ROOT STUFF: BEGIN--------------------*/
 @font-face {
     font-family: "Geist";
     src: url("Geist-VariableFont_wght.ttf");
 }
-
 *{
     margin: 0;
     padding: 0;
     
 }
-
 :root{
     --titlewhite: #dbd7d7
 }
-
 html{
     height: 100%;
     background-size:cover;
@@ -25,16 +23,11 @@ body{
     background-image: url("background.jpg");
     min-height: 100%;
     background-size: 160%;
-    background-color: rgb(7, 5, 47);
-    
-    
-    
-    
-    
+    background-color: rgb(7, 5, 47);  
 }
+/*--------------------HTML, BODY, ROOT STUFF: END--------------------*/
 
-
-/*BEGIN NAV STUFF*/
+/*--------------------NAV BAR: BEGIN--------------------*/
 h1{
     font-family: "Geist";
     font-weight: 700;
@@ -47,72 +40,61 @@ h1{
     animation-name: headerdrop;
     /*background: red;*/
     margin-top: 0%;
-    
-    
 }
-
 header{
     position: sticky;
     background-color: rgba(100, 100, 100, 0.150);
-    width: 100%;
-    height: 7vh;
+    width: 100vw;
+    height: 7%;
     top: 0;
     margin-left: none;
-    
     display: flex;
+    justify-content: space-between;
     z-index: 1000;
     text-decoration: none;
-    
-    
-    
-
-    
     color:rgba(207, 207, 207, 0.9);
-    
     backdrop-filter: blur(5px);
     border-bottom: 1px solid rgb(255, 255, 255, 0.15);
     animation-duration: .4s;
     animation-name: headerdrop;
-    
-    
 }
-
+.lefthandnav{
+   /*background-color: blue;*/
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .logothing{
     display: flex;
     transition: all .15s;
     margin-left: 1%;
     margin-top: -.3%;
+    /*background-color: blue;*/
+    width: auto;
 }
 .logothing:hover{
     transform: scale(1.03);
 }
-
-.logo{
-    
+.logo{  
     margin-left: 2%;
 }
-
 .logodesc{
     font-size: 18px;
-    
     margin-top: 14%;
- 
 }
-
-
 .options{
     text-decoration: none;
     font-size: 16px;
-    /*background:red;
+    /*background:rgb(185, 13, 191);
     border: 3px solid black;*/
-    width: 55%;
+    width: 100%;
     font-size: 16px;
-    margin-top: 1.25%;
+    margin-left: 7%;
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
+    align-items: center;
     font-family: "Geist";  
-    
-    
 }
 a {
     color: inherit;
@@ -120,34 +102,55 @@ a {
 .options * {
     /*background: green;
     border: 3px solid black;*/
-    padding-left: 2.5%;
-    padding-right: 2.5%;
     height: 30%;
-    margin-left: 15%;
-    margin-right: 15%;
     font-weight: 500;
     text-decoration: none;
     text-align: center;
     transition: all .15s;
     color:rgba(207, 207, 207, 0.9);
-
 }
-
 .options *:hover{
     color:rgba(244, 255, 254, 0.9);
     cursor: pointer;
     transform: scale(1.03);
 }
-
+.righthandnav{
+    width: 40%;
+    /*background-color: red;*/
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.righthandoptions{
+    /*background-color: rgb(171, 99, 4);*/
+    width: 100%;
+    margin-right: 5%;
+    font-family: "Geist";
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.righthandoptions *{
+    height: 30%;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    transition: all .15s;
+    color:rgba(207, 207, 207, 0.9);
+}
+.righthandoptions *:hover {
+    color:rgba(244, 255, 254, 0.9);
+    cursor: pointer;
+    transform: scale(1.03);
+}
 .GetStarted {
     font-size: 16px;
     font-family: "Geist";
-    margin-left: 2%;
-    margin-right: 7%;
-    margin-top: .9%;
-    height: 45%;
-    padding-top: 5px;
-    width: 15%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: auto;
     transition: all .15s;
     text-decoration: none;
     border-radius: 5px;
@@ -157,79 +160,73 @@ a {
     text-align: center;
     transition: all .2s ease;
 }
-
 .GetStarted:hover {
     background: linear-gradient(70deg, rgb(107, 24, 162) 0%, rgb(33, 57, 213) 99%);
     transform: scale(1.02);
     color: rgba(244, 255, 254, 0.9);
     cursor:pointer;
 }
-
 .Login{
-    font-size: 16px;
+    margin-left: 40%;
+}
+
+/*--------------------NAV BAR: END--------------------*/
+
+/*--------------------ABOUT PAGE: BEGIN--------------------*/
+
+.aboutcontainer{
+    background-color: rgba(100, 100, 100, 0.150);
+    box-shadow: 0 0 35px 4px rgb(220, 234, 235, 0.15);
+    border: 1px solid rgb(244, 247, 247, 0.05);
+    
+    display: flex;
     font-family: "Geist";
-    margin-left: 25%;
-    
-    text-align: center;
-    height: 40%;
-    font-weight: 500;
-    width: 40%;
-    
-    margin-top: 1.25%;
-    transition: all .15s;
-    text-decoration: none;
+    flex-direction: column;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    width: 90%;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    overflow-wrap:break-word;
     color:rgba(207, 207, 207, 0.9);
+    animation-duration: .15s;
+    animation-name: boxdrop;
 }
-
-.Login:hover{
-    color:rgba(244, 255, 254, 0.9);
-    cursor: pointer;
-    transform: scale(1.03);
-}
-
-.loggedinoptions{
-    font-size: 16px;
-    
-    width: 20%;
-    font-family: "Geist";
-    margin-left: 2%;
-    margin-right: 2%;
-    text-align: center;
-    height: 40%;
-    font-weight: 500;
-    
-    margin-top: 1.25%;
-    transition: all .15s;
-    text-decoration: none;
-    color:rgba(207, 207, 207, 0.9);
-}
-
-.loggedinoptions:hover{
-    color:rgba(244, 255, 254, 0.9);
-    cursor: pointer;
-    transform: scale(1.03);
-}
-
-
-/*END NAV STUFF*/
-/*BEGIN REGISTER FORM*/
-
-/*END REGISTER FORM*/
-
-/*ABOUT PAGE: BEGIN*/
 .aboutbox1{
     display:flex;
     width: 90%;
     /*background-color: brown;*/
-    justify-content: flex-start;
-    left: 3%;
-    right: 3%;
-    margin-top: 10%;
-    position: absolute;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+    font-size: 19px;
+    font-weight: 400; 
+}
+.aboutbox2{
+    text-align: center;
+    width: 90%;
+    /*background-color: blue;*/
+    justify-content: flex-start; 
     gap: 2%;
     font-size: 19px;
     font-weight: 400;
-    
+    flex-direction: row;
+    display: flex;
+}
+.aboutbox2desc{
+    /*background-color: blue;*/
+    text-align: left;
+    align-items: center;
+    display: flex;
+    margin-left: -1rem;
+    font-size: 19px;
+    width: auto;
+    font-weight: 400;
+}
+.aboutbottom{
+    margin-bottom: 8%;
 }
 .profpic {
     border-radius: 500px; 
@@ -242,17 +239,16 @@ a {
     filter: brightness(80%);
 }
 .gallerysection{
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    justify-content: flex-start;
     transition: all .3s ease;
-    
-    
+    display: flex;
+    justify-content: flex-start;
+    width: min(40vw, 300px);
+    flex-grow: 0;
+    margin-right: auto;
 }
 .gallerysection *{
     border-radius: 20px;
-    position: absolute;
+    margin-right: auto;
     transition: all .3s ease;
 }
 .gallerysection img:hover{
@@ -268,49 +264,29 @@ a {
     filter:brightness(40%);
     
 }
-.img3{
-    margin-top: 0%;
-    left: 10%;
+.img3{  
+    margin-left: -60px;
     filter:brightness(60%);
 }
 .img2{
-    margin-top: 0%;
-    left: 3%;
+    margin-left: -60px;
     filter: brightness(60%);
 }
-.img1{
-    left: -4%;
+.img1{ 
     filter:brightness(60%);
 }
 .img6{
-    margin-top: 0%;
-    /*left: 11.8%;*/
-    left:12.5%;
+    margin-right: 10px;
+    margin-left: -30px;
     filter:brightness(60%);
 }
 .img5{
-    margin-top: 0%;
-    left: 4.5%;
+    margin-left: -30px;
     filter: brightness(60%);
 }
 .img4{
-    left: -3.5%;
+    margin-left: 10px;
     filter:brightness(60%);
-}
-.aboutbox2{
-    text-align: center;
-    width: 90%;
-    /*background-color: brown;*/
-    justify-content: flex-start;
-    left: 3%;
-    right: 3%;
-    margin-top: 25%;
-    position: absolute;
-    gap: 2%;
-    font-size: 19px;
-    font-weight: 400;
-    height: 5%;
-    
 }
 .aboutbox3{
     text-align: center;
@@ -325,12 +301,13 @@ a {
     font-size: 19px;
     font-weight: 400;
     height: 5%;
-    
 }
 .aboutme{ 
     font-size:22px;
     margin-top:.5%;
-
+    /*background-color: blueviolet;*/
+    justify-content: center;
+    text-align: center;
 }
 .aboutbox2 h3{
     margin-top: -1.5%;
@@ -347,25 +324,39 @@ a {
     font-size: 19px;
     font-weight: 400;
 }
-.aboutbox2desc{
-    /*background-color: blue;*/
-    text-align: left;
-    position: absolute;
-    left: 25%;
-    margin-top: -2.5%;
-    font-size: 19px;
-    font-weight: 400;
+
+/*--------------------ABOUT PAGE: BEGIN--------------------*/
+/*--------------------FEATURE PAGE: BEGIN--------------------*/
+
+.featurecontainer{
+    background-color: rgba(100, 100, 100, 0.150);
+    box-shadow: 0 0 35px 4px rgb(220, 234, 235, 0.15);
+    border: 1px solid rgb(244, 247, 247, 0.05);
+    display: flex;
+    font-family: "Geist";
+    flex-direction: column;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 90%;
+    height: 75vh;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    overflow-wrap:break-word;
+    color:rgba(207, 207, 207, 0.9);
+    animation-duration: .15s;
+    animation-name: boxdrop;
 }
-/*ABOUT PAGE: END*/
-/*FEATURE PAGE: BEGIN*/
 .featurebox1 {
     display: flex;
-    align-items: center; /* Aligns the items (circle and description) vertically */
+    align-items: center; 
     width: 90%;
     height: 90%;
     /*background-color: brown;*/
-    justify-content: start; /* Align the items to the left */
-    margin-top: -2%; /* Adds space between boxes */
+    justify-content: start; 
+    margin-top: -2%; 
     position: relative;
     gap: 10px;
     font-size: 19px;
@@ -373,12 +364,10 @@ a {
     color: rgba(183, 183, 183, 0.9);
     transition: all 0.2s ease;
 }
-
 .featurebox1:hover {
     transform: scale(1.01);
     color: rgba(237, 236, 236, 0.9);
 }
-
 .numbercircle {
     background-color: rgb(46, 46, 46);
     box-shadow: 0 0 10px 2px rgba(98, 229, 238, 0.15);
@@ -386,38 +375,36 @@ a {
     border-radius: 50%;
     align-items: center;
     display: flex;
-    justify-content: center; /* Centers the number inside the circle */
+    justify-content: center;
     height: 45px;
     width: 45px;
     font-size: 30px;
     z-index: 100;
 }
-
 .featureboxdesc {
     position: relative;
     font-size: 16px;
     text-align: left;
-    width: 95%; /* Takes up the rest of the space */
+    width: 95%; 
     color:rgba(207, 207, 207, 0.9);
 }
-
 .featureboxdesc h4 {
     font-size: 24px;
     margin-bottom: 5px;
 }
-
 .featureboxdesc p {
     font-size: 16px;
     margin-top: 5px;
 }
-/*FEATURE PAGE: END*/
-/*HOME PAGE: BEGIN*/
+
+/*--------------------FEATURE PAGE: END--------------------*/
+/*--------------------HOME PAGE: BEGIN--------------------*/
+
 .HOMEBOX{
     background-color: rgba(100, 100, 100, 0.150);
     box-shadow: 0 0 35px 4px rgb(220, 234, 235, 0.15);
     border: 1px solid rgb(244, 247, 247, 0.05);
     height:auto;
-    
     width: 70vw;
     display: flex;
     flex-direction: column;
@@ -428,7 +415,6 @@ a {
     margin-bottom: 2%;
     backdrop-filter: blur(15px);
     overflow-wrap:break-word;
-    
     color: rgba(183, 183, 183, 0.9);
     animation-duration: .3s;
     animation-name: boxdrop;
@@ -459,14 +445,11 @@ a {
     font-family: "Geist";
     margin-top: 2%;
     margin-bottom:2%;
-    
-    
 }
 .homepagebox *{
     margin-left: 0%;
 }
-.homepagebox1{
-    
+.homepagebox1{  
     display:flex;
     justify-content: flex-start;
     width:100%;
@@ -474,7 +457,6 @@ a {
     font-size: 19px;
     font-weight: 400;
     line-height: 160%;
-    
 }
 .homepagebox1:hover{
     transform: scale(1.01);
@@ -485,29 +467,28 @@ a {
     margin-top:auto;
     margin-bottom:auto;
 }
-/*HOME PAGE: END*/
+
+/*--------------------HOME PAGE: END--------------------*/
+/*--------------------PROJECT PAGE: BEGIN--------------------*/
+
 .BOX{
     background-color: rgba(100, 100, 100, 0.150);
     box-shadow: 0 0 35px 4px rgb(220, 234, 235, 0.15);
     border: 1px solid rgb(244, 247, 247, 0.05);
     height:68vh;
-    
     width: 70vw;
     display: flex;
-    
     flex-direction: column;
     border-radius: 25px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
-    
     backdrop-filter: blur(15px);
     overflow-wrap:break-word;
     color:rgba(207, 207, 207, 0.9);
     animation-duration: .15s;
     animation-name: boxdrop;
 }
-
 .PROJBOX{
     background-color: rgba(100, 100, 100, 0.150);
     box-shadow: 0 0 35px 4px rgb(220, 234, 235, 0.15);
@@ -526,18 +507,11 @@ a {
     animation-duration: .3s;
     animation-name: boxdrop;
 }
-
 .PROJBOX *{
-    /*background: red;
-    border: 3px solid black;*/
-    
     margin-left:auto;
     margin-right:auto;
     font-family: "Geist";
-    
-    
 }
-
 .PROJBOX h1{
     animation-duration: .3s;
     animation-name: textdrop;
@@ -550,8 +524,8 @@ a {
 }
 .PROJBOX h3{
     animation-duration: .3s;
-    animation-name: textdrop;}
-
+    animation-name: textdrop;
+}
 h2{
     /*background: red*/
     height: 5%;
@@ -559,91 +533,13 @@ h2{
     text-align: center;
     margin-top: 0%;
 }
-
-.formlabel{
-    text-align: center;
-    margin-bottom: -15%;
-    margin-left: auto;
-    margin-right: auto;
-    height: 100%;
-    font-size: 25px;
-    
-}
-
-.forminput{
-    
-    padding-left:10px;
-    margin-bottom: 10%;
-    height: 50%;
-    backdrop-filter: blur(15px);
-    background-color:rgba(65, 65, 65, 0.078);
-    color:rgba(207, 207, 207, 0.9);
-    width: 400px;
-    border:none;
-    border-radius: 15px;
-    font-size: 27px;
-    
-    
-}
-
-.createbutton{
-    display:flex;
-    margin-left:auto;
-    margin-right:auto;
-    background: linear-gradient(70deg, rgba(85,21,128,1) 0%, rgba(22,44,186,1) 99%);
-    border-radius: 15px;
-    font-weight: 500;
-    color:rgba(207, 207, 207, 0.9);
-    border:none;
-    font-size: 25px;
-    padding-left: 20%;
-    padding-right: 20%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    
-    font-family: "Geist";
-    transition: all .2s ease;
-}
-
-.createbutton:hover {
-    background: linear-gradient(70deg, rgb(95, 21, 140) 0%, rgb(33, 57, 200) 99%);
-    transform: scale(1.02);
-    color: rgba(244, 255, 254, 0.9);
-    cursor:pointer;
-}
-.BOX *{
-    /*background: red;
-    border: 3px solid black;*/
-    
-    margin-left:auto;
-    margin-right:auto;
-    font-family: "Geist";
-    animation-duration: .3s;
-    animation-name: textdrop;
-}
-
-.taskarea {
-    overflow-x: auto;
-    overflow-y: hidden;
-    border-radius: 50px;
-    width: 90%;
-    min-height: 70%;
-    margin-top: 2%;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    gap: 1%;
-    
-    
-}
-
 .taskcard{
-    
     margin-top: 2%;
     margin-left: 2%;
     margin-bottom: 2%;
     margin-right: 2%;
-    height: 80%;
+    height: 47vh;
+    flex-shrink: 0;
     display:flex;
     flex-direction:column;
     background-color:rgb(46, 46, 46);
@@ -651,31 +547,38 @@ h2{
     box-shadow: 0 0 15px 4px rgb(220, 234, 235, 0.05);
     border: 1px solid rgb(244, 247, 247, 0.05);
     border-radius: 20px;
-    min-width: 20%;
-    max-width: 20%;
-    width: 20%;
-    max-height: 80%;
-    min-height:50%;
+    width: 17vw;
+    min-width: 250px;
     text-align: center;
-    
     animation-duration: .3s;
     animation-name: carddrop;
     transition:all .15s ease;
 }
-.taskcard h4 {
-    
+.taskcard:hover{
+    display:flex;
+    flex-direction: column;
+    background-color:rgb(52, 52, 52);
+    box-shadow: 0 0 10px 5px rgb(220, 234, 235, 0.1);
+    padding: 5px;
+    /*border: solid 1px black;*/
+    border-radius: 20px;
+    min-width: 20%;
+    word-wrap: break-word;
+    text-align: center;
+    transform: scale(1.05);
+    font-size: 1.05rem;
+}
+.taskcard h4 { 
     width: 85%; 
 }
 .taskcard form{
-    
     flex-grow:1;
     width: 90%;
 }
-
 .taskinputdesc{
     box-shadow: 0 0 15px 4px rgb(220, 234, 235, 0.02);
     border: 1px solid rgb(244, 247, 247, 0.05);
-    height:66%;
+    height:70%;
     width: 100%;
     background-color: rgba(34, 34, 34, 0.05);
     text-align: left;
@@ -691,11 +594,11 @@ h2{
     padding-top: 2%;
     box-sizing: border-box;
 }
-
 .taskinputtitle{
     box-shadow: 0 0 5px 4px rgb(220, 234, 235, 0.02);
     border: 1px solid rgb(244, 247, 247, 0.05);
-    height: 10%;
+    height: 3vh;
+    width: 15vw;
     background-color: rgba(34, 34, 34, 0.05);
     border:none;
     border-radius:15px;
@@ -704,25 +607,6 @@ h2{
     font-family: "Geist";
     font-size: 16px;
 }
-
-
-.taskcard:hover{
-    display:flex;
-    flex-direction: column;
-    background-color:rgb(52, 52, 52);
-    box-shadow: 0 0 10px 5px rgb(220, 234, 235, 0.1);
-    padding: 5px;
-    /*border: solid 1px black;*/
-    border-radius: 20px;
-    min-width: 20%;
-    word-wrap: break-word;
-    text-align: center;
-    transform: scale(1.05);
-    font-size: 1.05rem;
-    /*cursor: pointer;*/
-    
-}
-
 .projectlink{
     text-decoration: none;
     display: block;
@@ -730,33 +614,24 @@ h2{
     height:100%;
     width: 100%;
 }
-
 .taskdescription{
     overflow-y: auto;
     padding-bottom:2%;
-    max-height: 50%;
-    
-    
+    max-height: 50%; 
 }
 .taskcardtitle{
     overflow-y: auto;
     max-height:20%;
     padding-bottom:2%;
     min-height:20%;
-   
 }
-
 .taskoptions{
     text-decoration: none;
     display:flex;
     flex-direction: column;
     width: 90%;
-    
     margin-top:auto;
-    
-
 }
-
 .taskoptions *{
     text-decoration: none;
     margin-top:5%;
@@ -773,11 +648,8 @@ h2{
     background-color:rgb(86, 86, 86);
     color:rgba(207, 207, 207, 0.9);
     transition:all .1s ease;
-    border: solid 1px rgb(40, 40, 40);
-    
-    
+    border: solid 1px rgb(40, 40, 40); 
 }
-
 .taskoptions *:hover {
     background-color:rgb(104, 103, 103);
     cursor: pointer;
@@ -785,16 +657,81 @@ h2{
     color:rgba(244, 255, 254, 0.9);
     box-shadow: 0 0 10px 2px rgb(220, 234, 235, 0.1);
 }
-
-
 .completed{
     background-color: rgb(16, 78, 2);
 }
-
 .completed:hover{
     background-color: rgb(7, 120, 7);
 }
 
+/*--------------------PROJECT PAGE: END--------------------*/
+/*--------------------LOGIN/SIGNUP PAGES: BEGIN--------------------*/
+
+.formlabel{
+    text-align: center;
+    margin-bottom: -15%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    font-size: 25px;  
+}
+.forminput{
+    padding-left:10px;
+    margin-bottom: 10%;
+    height: 50%;
+    backdrop-filter: blur(15px);
+    background-color:rgba(65, 65, 65, 0.078);
+    color:rgba(207, 207, 207, 0.9);
+    width: 400px;
+    border:none;
+    border-radius: 15px;
+    font-size: 27px;
+}
+.createbutton{
+    display:flex;
+    margin-left:auto;
+    margin-right:auto;
+    background: linear-gradient(70deg, rgba(85,21,128,1) 0%, rgba(22,44,186,1) 99%);
+    border-radius: 15px;
+    font-weight: 500;
+    color:rgba(207, 207, 207, 0.9);
+    border:none;
+    font-size: 25px;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: "Geist";
+    transition: all .2s ease;
+}
+.createbutton:hover {
+    background: linear-gradient(70deg, rgb(95, 21, 140) 0%, rgb(33, 57, 200) 99%);
+    transform: scale(1.02);
+    color: rgba(244, 255, 254, 0.9);
+    cursor:pointer;
+}
+.BOX *{
+    margin-left:auto;
+    margin-right:auto;
+    font-family: "Geist";
+    animation-duration: .3s;
+    animation-name: textdrop;
+}
+.taskarea {
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: 50px;
+    width: 90%;
+    min-height: 70%;
+    margin-top: 2%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1%;
+}
+
+/*--------------------LOGIN/SIGNUP PAGES: END--------------------*/
+/*--------------------ANIMATIONS: BEGIN--------------------*/
 
 @keyframes carddrop{
     0%{
@@ -813,31 +750,20 @@ h2{
 @keyframes headerdrop {
     0%{
         filter: blur(.05px);
-        
         position: sticky;
         transform: translateY(2%);
-        
-       
-
     }
     100%{
         filter: none;
         transform: translateY(0);
         position: sticky;
-        
     }
 }
 @keyframes boxdrop{
     0%{
-        
-        
-        /*margin-top: 3%;*/
         transform: translateY(2%);
     }
     100%{
-        
-        /*margin-top: 2.5%;*/
-        
         transform: translateY(0);
     }
 }
@@ -846,7 +772,6 @@ h2{
         filter:blur(.25px);
         opacity:30%;
         transform: translateY(30%);
-        
     }
     100%{
         filter:none;
@@ -854,4 +779,5 @@ h2{
         opacity:90%;
     }
 }
-
+/*--------------------ANIMATIONS: END--------------------*/
+/*LOTS OF CSS*/

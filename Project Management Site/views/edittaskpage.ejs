@@ -9,89 +9,60 @@
 </head>
 <body>
     <%- include('includes/nav') %>
-    
-
     <div class = "PROJBOX">
         <h1>Project Editor</h1>
         <h2><%=project.title%></h2>
         <% errors.forEach(error => { %>
             <p class ="notice"><%= error %></p>
-       <% }) %>
+        <% }) %>
        <h4>Current Tasks:</h4>
        <div class = "taskarea">
             <%let taskcounter = 1;%>
             <% gettasks.forEach(task => { %>
-            <div class = "taskcard" id = "task-<%= task.taskid %>">
-                
-                
-                <%if (gettaskinedit.taskid == task.taskid){ %>
-                    <h4>Task #<%=taskcounter%></h4>
-                    <form action = "/project/<%=project.id%>/save-task-edit/<%=task.taskid%>" method = "POST">
-                        <h4>Task Name</h4>
-                        <input type = "text" id = "tasktitle" name = "tasktitle"class = "taskinputtitle" value = "<%=task.title%>" style = "text-align:center">
-                        <h4>Task Description</h4>
-                        <textarea type = "text" id = "taskdesc" name = "taskdesc" class = "taskinputdesc"  style = "text-align:center"><%=task.description%></textarea>
-                    <div class = "taskoptions">
-                        
-                        <button class = "saveedit">Save Edit</button>
-                        
-                    </div>
-                    </form>
-                <%} %>
+                <div class = "taskcard" id = "task-<%= task.taskid %>">
+                    
+                    <%if (gettaskinedit.taskid == task.taskid){ %>
+                        <h4>Task #<%=taskcounter%></h4>
+                        <form action = "/project/<%=project.id%>/save-task-edit/<%=task.taskid%>" method = "POST">
+                            <h4>Task Name</h4>
+                            <input type = "text" id = "tasktitle" name = "tasktitle"class = "taskinputtitle" value = "<%=task.title%>" style = "text-align:center">
+                            <h4>Task Description</h4>
+                            <textarea type = "text" id = "taskdesc" name = "taskdesc" class = "taskinputdesc"  style = "text-align:center"><%=task.description%></textarea>
+                        <div class = "taskoptions">
+                            <button class = "saveedit">Save Edit</button> 
+                        </div>
+                        </form>
+                    <%} %>
 
-                <%if (gettaskinedit.taskid != task.taskid){ %>
-                    <h4 class ="notice" style = "text-align: center">Task #<%=taskcounter%><br><%=task.title%></h4>
-                    <p><%=task.description%><%=task.taskid%></p>
-                        <%} %>
-                </h4>
-                
-                <%if (gettaskinedit.taskid != task.taskid){ %>
-                    
-                
-                <div class = "taskoptions">
-                    <br>
-                    
-                    
-                    
-                    
-                    
                     <%if (gettaskinedit.taskid != task.taskid){ %>
-                        <a href = "/project/<%=project.id%>/edit-task/<%=task.taskid%>">Edit Task</a>
-                        <a href = "/project/<%=project.id%>/complete-task/<%=task.taskid%>">Complete Task</a>
-                        
-                        <a href = "/project/<%=project.id%>/edit-task/<%=task.taskid%>">Edit Task</a>
+                        <h4 class ="notice" style = "text-align: center">Task #<%=taskcounter%><br><%=task.title%></h4>
+                        <p><%=task.description%></p>
+                    <%} %>
+                    <%if (gettaskinedit.taskid != task.taskid){ %>
+                    <div class = "taskoptions">
+                        <br>
+                        <%if (gettaskinedit.taskid != task.taskid){ %>
+                            <a href = "/project/<%=project.id%>/complete-task/<%=task.taskid%>">Complete Task</a> 
+                            <a href = "/project/<%=project.id%>/edit-task/<%=task.taskid%>">Edit Task</a>
+                            <a href = "/project/<%=project.id%>/delete-task/<%=task.taskid%>">Delete Task</a>
                         <%} %>
-                    <button>Delete Task</button>
-                    
-                    
+                    </div>
                 </div>
-                <%} %>
-                
-
-            </div>
-            
+            <%} %> 
             <% taskcounter++;}) %>
             <div class = "taskcard">
                 <h4 class = "notice" style = "text-align: center">Make a Task</h4>
                 <form action = "/createtask/<%=project.id%>" method = "POST">
                     <h4 for = "tasktitle" class = "notice">Task Name</h4>
                     <input type = "text" id = "tasktitle" name = "tasktitle" autocomplete="off" class = "taskinputtitle">
-                    
                     <h4 for = "taskdesc" class = "notice">Task Description</h4>
                     <textarea type = "text" id = "taskdesc" name = "taskdesc" class = "taskinputdesc" autocomplete="off"></textarea><br>
-                    
                     <div class = "taskoptions">
                         <button class = "taskbutton">Create Task</button>
                     </div>
                 </form>
-                
             </div>
        </div>
-       
-        
-        
-        
-    </div>
-    
+    </div>   
 </body>
 </html>

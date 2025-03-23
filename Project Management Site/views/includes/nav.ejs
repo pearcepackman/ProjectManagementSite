@@ -1,33 +1,39 @@
 <header>
-    <div class = "logothing">
-    <a href = "/" style = "text-decoration: none;">
-    <div class = "logo">
-        <h1>PS</h1>
-    </div>
-    </a>
+    <div class = "lefthandnav">
+        <div class = "logothing">
+            <a href = "/" style = "text-decoration: none;">
+                <div class = "logo">
+                    <h1>PS</h1>
+                </div>
+            </a>
     
-    <div class = "logodesc">
-        <a href = "/" style = "text-decoration: none;">
-        <h5>Projects Simplified</h5>
-        </a>
-    </div>
-    </div>
+            <div class = "logodesc">
+                <a href = "/" style = "text-decoration: none;">
+                    <h5>Projects<br>Simplified</h5>
+                </a>
+            </div>
+        </div>
     
-    <div class = "options">
-        <a href = "/features" class = "OptionFeature">Features</a>
-        <a href = "/" class = "OptionHome">Home</a>
-        <a href = "/about" class = "OptionAbout" style="text-decoration:none;">About</a>
+    
+        <div class = "options">
+            <a href = "/" class = "OptionHome">Home</a>
+            <a href = "/features" class = "OptionFeature">Features</a>
+            <a href = "/about" class = "OptionAbout" style="text-decoration:none;">About</a>
         
+        </div>
     </div>
-    <% if(user) { %>
-    <a href = "/userpage" class = "Login">Logged in as: <%=user.username%></a>
-    <a href = "/logout" class = "loggedinoptions">Log out</a>
-    
-    <a href = "/userpage" class = "loggedinoptions">Your Projects</a>
-    <% } %>
-    <% if(!user) { %>
-    <a href = "/login" class = "Login">Login</a>
-    <a href = "/signup" class = "GetStarted">Get Started</a>
-    <% } %>
+    <div class = "righthandnav">
+        <div class = "righthandoptions">
+            <% if(user) { %>
+                <a href = "/userpage" class = "loggedinoptions">Logged in as: <%=user.username%></a>
+                <a href = "/logout" class = "loggedinoptions">Log out</a>
+                <a href = "/userpage" class = "loggedinoptions">Your Projects</a>
+            <% } %>
+            <% if(!user) { %>
+                <a href = "/login" class = "Login">Login</a>
+                <a href = "/signup" class = "GetStarted">Get Started</a>
+            <% } %>
+        </div>
+    </div>
     
 </header>

@@ -19,26 +19,19 @@
             <h2>Select a project to get started!</h2><br>
             <h3>Click a card to begin!</h3>
             <%}%>
-        
         <div class = "taskarea">
             <%let projcounter = 1;%>
             <% getprojects.forEach(project => { %>
-                
-                
                 <div class = "taskcard <%= project.completed ? 'completed' : '' %>" id = "project-<%= getprojects.id %>">
-                    
                     <% if (typeof getprojectinedit !== "undefined" && getprojectinedit && getprojectinedit.id) { %>
                         <%if (getprojectinedit.id == project.id){%>
-                    
                         <form action = "/save-edit-project/<%=project.id%>" method = "POST">
                             <h4>Project Name</h4>
                             <input type = "text" id = "projecttitle" name = "projecttitle" class = "taskinputtitle" value = "<%=project.title%>" style = "text-align:center">
                             <h4>Project Description</h4>
                             <textarea type = "text" id = "projectdesc" name = "projectdesc" class = "taskinputdesc" style = "text-align:center"><%=project.desc%></textarea>
                         <div class = "taskoptions">
-                            
                             <button class = "saveedit">Save Edit</button>
-                            
                         </div>
                         </form>
                         <%} else{%>
@@ -50,16 +43,10 @@
                             <%if (project.completed == 0){%>
                             <div class = "taskoptions">
                                 <br>
-                                
-                                
                                 <a href = "/complete-project/<%=project.id%>">Complete Project</a>
-                                
                                 <a href = "/edit-project/<%=project.id%>">Edit Project Details</a>
                                 <a href = "/delete-project/<%=project.id%>">Delete Project</a>
-                                
-                                
                             </div>
-                            
                             <%}%>
                             <%if (project.completed == 1){%>
                                 <h3>COMPLETED</h3>
@@ -69,31 +56,18 @@
                             </div>
                             <%}%>
                             <%}%>
-                        
                         <% } else { %>
-                            
-                        
-                            
-                        
                     <a href = "/project/<%=project.id%>" class = "projectlink">
                     <h4 class ="taskcardtitle" style = "text-align: center">Project #<%=projcounter%><br><%=project.title%></h4>
                     <br>
                     <p class = "taskdescription"><%=project.desc%></p>
                     </a>
-                    
                     <%if (project.completed == 0){%>
                     <div class = "taskoptions">
-                        
-                        
-                        
                         <a href = "/complete-project/<%=project.id%>">Complete Project</a>
-                        
                         <a href = "/edit-project/<%=project.id%>">Edit Project Details</a>
                         <a href = "/delete-project/<%=project.id%>">Delete Project</a>
-                        
-                        
                     </div>
-                    
                     <%}%>
                     <%if (project.completed == 1){%>
                         <h3>COMPLETED</h3>
@@ -101,14 +75,9 @@
                         <a href = "/uncomplete-project/<%=project.id%>">Uncomplete</a>
                         <a href = "/delete-project/<%=project.id%>">Delete Project</a>
                     </div>
-                
                     <%}%>
                     <% } %>
-                    
-                    
                 </div>
-                
-            
             <% projcounter++;}) %>
             <div class = "taskcard">
                 <h4 class = "notice" style = "text-align: center">Make a Project</h4>
@@ -123,15 +92,8 @@
                         <button class = "taskbutton">Create Project</button>
                     </div>
                 </form>
-                
             </div>
-            
-            
-            
-                
         </div>
-
-        
     </div>
 </body>
 </html>
