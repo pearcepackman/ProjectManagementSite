@@ -25,6 +25,7 @@
                 <div class = "taskcard <%= project.completed ? 'completed' : '' %>" id = "project-<%= getprojects.id %>">
                     <% if (typeof getprojectinedit !== "undefined" && getprojectinedit && getprojectinedit.id) { %>
                         <%if (getprojectinedit.id == project.id){%>
+                        <h4 class ="taskcardtitle" style = "text-align: center">Edit Project</h4>
                         <form action = "/save-edit-project/<%=project.id%>" method = "POST">
                             <h4>Project Name</h4>
                             <input type = "text" id = "projecttitle" name = "projecttitle" class = "taskinputtitle" value = "<%=project.title%>" style = "text-align:center">

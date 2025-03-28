@@ -1,3 +1,5 @@
 .env
 node_modules/
-
+ProjectManagement.db
+ProjectManagement.db-shm
+ProjectManagement.db-wal
